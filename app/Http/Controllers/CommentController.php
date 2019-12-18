@@ -18,7 +18,7 @@ class CommentController extends Controller
 
         $comment = Comment::create($request->all());
 
-        broadcast(new CommentCreatedEvent($comment));
+        // broadcast(new CommentCreatedEvent($comment));
 
         return response()->json($comment, 200);
     }

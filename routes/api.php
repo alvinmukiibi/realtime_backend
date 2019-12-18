@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-Route::group(['prefix' => 'comments', 'middleware' => 'cors'], function () {
+Route::group(['prefix' => 'comments'], function () {
     Route::get('/', 'CommentController@index');
     Route::post('/', 'CommentController@store');
 });
