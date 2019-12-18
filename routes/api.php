@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-Route::group(['prefix' => 'users'], function () {
-    Route::get('/', 'UserController@index');
-    Route::post('/', 'UserController@store');
+Route::group(['prefix' => 'comments'], function () {
+    Route::get('/', 'CommentController@index');
+    Route::post('/', 'CommentController@store');
 });

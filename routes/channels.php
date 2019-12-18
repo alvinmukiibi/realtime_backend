@@ -17,6 +17,7 @@ Broadcast::channel('App.User.{id}', function ($user, $id) {
  */
 
 
-Broadcast::channel('userCreated', function(){
+Broadcast::channel('comment-channel', function(){
     return true;
+    //we return true in the function callback so that everybody can use this channel to broadcast events.
 });

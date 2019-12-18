@@ -11,7 +11,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class UserCreatedEvent implements ShouldBroadcastNow
+class CommentCreatedEvent implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -20,12 +20,12 @@ class UserCreatedEvent implements ShouldBroadcastNow
      *
      * @return void
      */
+    public $comment;
 
-    public $user;
-
-    public function __construct($user)
+    public function __construct($comment)
     {
-        $this->user = $user;
+        $this->comment = $comment;
+
     }
 
     /**
@@ -33,12 +33,14 @@ class UserCreatedEvent implements ShouldBroadcastNow
      *
      * @return \Illuminate\Broadcasting\Channel|array
      */
+    //defines the channel on which the event shall be broadcast
     public function broadcastOn()
     {
-        return new Channel('userCreated');
+        return new Channel('comment-channel');
     }
 
+    //customizes the broadcast name because by default Laravel uses the event’s class name
     public function broadCastAs(){
-        return 'user-created';
+        return 'newComment';
     }
 }
